@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Pagi</title>
+</head>
+<style>
+    *,
+    html {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        background-image: url('Langit.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .center{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+
+    .papan {
+        margin-top: 60px;
+        background-color: transparent;
+        height: 250px;
+        width: 200px;
+        padding: 10px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0px 0px 20px #000000;
+        border: 1px solid #ffffff;
+        animation: poop 0.5s ease;
+    }
+
+    .isi {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    img {
+        margin-top: 20px;
+        height: 150px;
+        width: 150px;
+
+    }
+
+    .kata1 {
+        margin-top: 25px;
+        font-family: Tahoma;
+        font-weight: bolder;
+    }
+
+    .kata2 {
+        font-family: Tahoma;
+        font-weight: 200;
+    }
+
+    .pilihan {
+        margin-top: 60px;
+    }
+
+    @keyframes poop{
+        10%{
+            /* width: 75%;
+            height: 180px; */
+            scale: 90%;
+        }
+        90%{
+            scale: 100%;
+        }
+    }
+
+    a {
+        font-family: Tahoma;
+        font-size: small;
+        background-color: #d3f60dec;
+        padding: 15px;
+        margin: 25px;
+        border-radius: 10px;
+        border: 2px solid #000000;
+    } 
+
+    .mark{
+        font-family:Tahoma;
+        color: #00000064;
+        font-size: smaller;
+        position: absolute;
+        margin-top: 90vh;
+    }
+</style>
+
+<body>
+    <a class="surat" style="margin-top: 50%;" onclick="mulai()" id="play">Klick Mulai</a>
+    <div id="kontent" class="center">
+        <nav class="papan" id="nomor1">
+            <div class="isi">
+                <img id="foto" src="pagi.gif" style="margin-right: 10%;" />
+                <p class="kata1" id="kata1">Pagi Lisa</p>
+                <p class="kata2" id="kata2">Ciee udah bangun:></p>
+            </div>
+        </nav>
+
+        <div class="papan" id="nomor2">
+            <div class="isi">
+                <img id="foto" src="mau ngomong.gif" style="margin-right: 10%;" />
+                <p class="kata1" id="kata1">Tobi</p>
+                <p class="kata2" id="kata2">Mau ngomong sesuatu:></p>
+            </div>
+        </div>
+
+        <div class="papan" id="nomor3">
+            <div class="isi">
+                <img id="foto" src="sayang.gif" />
+                <p class="kata1" id="kata1">Cuma mau bilang</p>
+                <p class="kata2" id="kata2">Tobi Sayang sama lisa:v</p>
+            </div>
+        </div>
+
+        <div class="papan" id="nomor4">
+            <div class="isi">
+                <img id="foto" src="nanya.gif" style="margin-right: 10%;"/>
+                <p class="kata1" id="kata1">Lisa gimana?</p>
+                <p class="kata2" id="kata2">Sayang Tobi gak?🤣</p>
+            </div>
+        </div>
+
+        <div class="papan" id="nomor5">
+            <div class="isi">
+                <img id="foto" src="benarkah.gif" />
+                <p class="kata1" id="kata1">Yeee...🤣</p>
+                <p class="kata2" id="kata2">Makasih :></p>
+            </div>
+        </div>
+
+        <div class="papan" id="nomor6">
+            <div class="isi">
+                <img id="foto" src="sedih.gif" />
+                <p class="kata1" id="kata1">Hiks🤧</p>
+                <p class="kata2" id="kata2">Yaudah lah🙃</p>
+            </div>
+        </div>
+
+
+        <div class="papan" id="selesai">
+            <div class="isi">
+                <img id="foto" src="sekian.gif" />
+                <p class="kata1" id="kata1">Sekian dari TOBI</p>
+                <p class="kata2" id="kata2">Makasih iyaa:></p>
+            </div>
+        </div>
+
+        <div class="pilihan" id="pilih">
+            <a onclick="mau()" id="yes">Iya</a>
+            <a style="background-color: #1e69ff;" onclick="gak()" id="no">Gak</a>
+        </div>
+    </div>
+
+    <p class="mark">Dari : Tobi Akatsuki</p>
+
+    <script>
+        kontent.style.display="none"
+        nomor2.style.display="none"
+        nomor3.style.display="none"
+        nomor4.style.display="none"
+        nomor5.style.display="none"
+        nomor6.style.display="none"
+        selesai.style.display="none"
+        pilih.style.display="none"
+        let play = document.getElementById("play")
+        function playMusik() {
+            const lagu = "musik.mp3"
+            let audio = new Audio(lagu)
+            audio.play()
+        }
+        play.addEventListener("click", playMusik)
+
+        function loading4() {
+            let time=0
+            let loaded = setInterval((interval) => {
+                time+=1
+                if (time == 5) {
+                    console.log("ini adalah : "+time)
+                    nomor5.style.display="none"
+                    nomor6.style.display="none"
+                    selesai.style.display="block"
+                    pilih.style.display="none"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded)
+            }, 5000)
+        }
+
+        function loading3() {
+            let time=0
+            let loaded = setInterval((interval) => {
+                time+=1
+                if (time == 5) {
+                    console.log("ini adalah : "+time)
+                    nomor3.style.display="none"
+                    nomor4.style.display="block"
+                    pilih.style.display="block"
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded)
+            }, 5000)
+        }
+
+        function loading2() {
+            let time=0
+            let loaded = setInterval((interval) => {
+                time+=1
+                if (time == 5) {
+                    console.log("ini adalah : "+time)
+                    nomor2.style.display="none"
+                    nomor3.style.display="block"
+                    pilih.style.display="none"
+                    loading3()
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded)
+            }, 5000)
+        }
+
+        function loading() {
+            let time=0
+            let loaded = setInterval((interval) => {
+                time+=1
+                if (time == 5) {
+                    console.log("ini adalah : "+time)
+                    nomor1.style.display="none"
+                    nomor2.style.display="block"
+                    loading2()
+                }
+            }, 1000)
+            setInterval((interval) => {
+                clearInterval(loaded)
+            }, 5000)
+        }
+
+
+
+        
+
+
+        function mulai(){
+            play.style.display="none"
+            kontent.style.display="block"
+            kontent.style.display="flex"
+            kontent.style.aligntItems="center"
+            loading()
+        }
+
+
+
+        function gak() {
+            nomor4.style.display="none"
+            nomor6.style.display="block"
+            pilih.style.display="none"
+            loading4()
+        }
+
+        function mau() {
+            nomor4.style.display="none"
+            nomor5.style.display="block"
+            pilih.style.display="none"
+            loading4()
+        }
+    </script>
+</body>
+
+</html>
